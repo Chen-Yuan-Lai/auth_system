@@ -44,7 +44,16 @@ auth_system
 ├── README.md
 └── alembic.ini
 ```
-# Solution Features
+# Solution Details
+1. Implement two **RESTful HTTP APIs** for creating and verifying an account and password.
+2. Use **Python** and **FastAPI** framework to implement the solution.
+3. Use Pydantic schema for input validation.
+4. Centralized handling predictable and unpredictable error with customized **middleware** and **exception handler**.
+5. Use **PostgreSQL** for data storage
+6. Use **Redis** to implement log in retry logic. And run the **lua script** for atomic pipeline.
+7. Package the solution in a Docker container and push it to **Docker Hub**.
+8. Provide a comprehensive API document with **Swagger UI**. 
+
 
 # Quick Start
 1. ### Clone the project
