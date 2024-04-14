@@ -1,0 +1,11 @@
+__pycache__
+Dockerfile
+.dockignore
+.gitignore
+venv/
+.ruff_cache/
+.vscode/
+.pre-commit-config.yaml
+spam.log
+.env.example/
+db_volumes/

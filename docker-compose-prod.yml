@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16.2
+    restart: always
+    volumes:
+      - ./db_volumes/postgresql:/var/lib/posgresql/data/
+    ports:
+      - 5432:5432
+    env_file:
+      - .env/.db.env
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "senao"]
+      interval: 2s
+      timeout: 3s
+      retries: 5
+  redis:
+    image: redis:7.2.1
+    ports:
+      - 6379:6379
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 5
+    volumes:
+      - ./db_volumes/redis:/data/
+
+  backend:
+    image: handsomelai0913/senao:latest
+    env_file:
+      - .env/.prod.env
+    restart: always
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+      - redis
+
+networks:
+  default:
+    name: auth_system_network
