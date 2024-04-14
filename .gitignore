@@ -1,11 +1,11 @@
-# venv/
-# .venv/
+venv/
+.venv/
 .env
 __pycache__/
 
 .vscode/
-bin/
-include/
-lib/
-lib64
-pyvenv.cfg
+.ruff_cache/
+
+docker-compose.yml
+spam.log
+db_volumes/
