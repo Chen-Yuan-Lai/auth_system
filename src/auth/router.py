@@ -36,10 +36,17 @@ router = APIRouter()
             },
         },
         400: {
-            "description": "Bad Request - User already exists.",
+            "description": "Bad Request",
             "content": {
                 "application/json": {
-                    "example": {"success": False, "reason": "User already exists"}
+                    "examples": {
+                        "User already exists": {
+                            "value": {
+                                "success": False,
+                                "reason": "User already exists.",
+                            },
+                        },
+                    }
                 },
             },
         },
@@ -53,6 +60,13 @@ router = APIRouter()
                             "value": {
                                 "success": False,
                                 "reason": "Username (or Password) is too short (or too long)",
+                            },
+                        },
+                        "Password must have enough complexity": {
+                            "description": "Password must include at least 1 lowercase letter, 1 uppercase letter, and 1 digit",
+                            "value": {
+                                "success": False,
+                                "reason": "Invalid password: must include at least 1 lowercase letter, 1 uppercase letter, and 1 digit.",
                             },
                         },
                         "Fields are all required": {
@@ -111,11 +125,11 @@ def sign_up(user: User, db: db_dependency):
                                 "reason": "User not found.",
                             },
                         },
-                        "Fields are all required": {
-                            "description": "Username or Password must be contained in the request body",
+                        "password verification fails": {
+                            "description": "When a user try to log in with wrong password, the response will show the remaining times he can try",
                             "value": {
                                 "success": False,
-                                "reason": "Username (or Password) is required",
+                                "reason": "Log in failed, you have 4 more attempts left.",
                             },
                         },
                     }
@@ -132,6 +146,13 @@ def sign_up(user: User, db: db_dependency):
                             "value": {
                                 "success": False,
                                 "reason": "Username (or Password) is too short (or too long)",
+                            },
+                        },
+                        "Password must have enough complexity": {
+                            "description": "Password must include at least 1 lowercase letter, 1 uppercase letter, and 1 digit",
+                            "value": {
+                                "success": False,
+                                "reason": "Invalid password: must include at least 1 lowercase letter, 1 uppercase letter, and 1 digit.",
                             },
                         },
                         "Fields are all required": {

@@ -12,7 +12,7 @@ class User(BaseModel):
         reForPassword: re.Pattern[str] = re.compile(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)")
         if not reForPassword.match(p):
             raise ValueError(
-                "Invalid password: must include at least one lowercase letter, one uppercase letter, and one digit."
+                "Invalid password: must include at least 1 lowercase letter, 1 uppercase letter, and 1 digit."
             )
         return p
 
