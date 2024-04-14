@@ -48,9 +48,15 @@ auth_system
     ```bash
     git clone https://github.com/Chen-Yuan-Lai/auth_system.git
     ```
-
-2. ### Rename the directory `.env.example` to `.env`
-3. ### Run docker compose
+2. ### Enter the project
+   ```bash
+   cd auth_system
+   ```
+3. ### Rename a folder that store environment variables 
+    ```bash
+    mv .env.example .env
+    ```
+4. ### Run docker compose
    ```bash
    # Old CLI
    docker-compose -f docker-compose-prod.yml down -v
@@ -58,3 +64,4 @@ auth_system
    # New CLI
    docker compose -f docker-compose-prod.yml down -v
    ```
+# APIs
