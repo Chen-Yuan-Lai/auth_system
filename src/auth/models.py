@@ -15,6 +15,6 @@ class User(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String(32), nullable=False, unique=True)
-    hashed_password = Column(String(128), nullable=False)
-    created_at = Column(TIMESTAMP, server_default=func.now(), nullable=False)
+    hash_password = Column(String(128), nullable=False)
+    created_at = Column(TIMESTAMP, server_default=func.now())
     delete = Column(Boolean, default=False)

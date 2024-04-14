@@ -7,7 +7,7 @@ class Config(BaseSettings):
     REDIS_URL: RedisDsn
 
     class Config:
-        env_file = ".env"
+        env_file = ".env/.dev.env"
 
 
 settings = Config()
