@@ -15,20 +15,20 @@ auth_system
 │   ├── auth
 │   │   ├── __init__.py
 │   │   ├── router.py
-│   │   ├── schemas.py  
-│   │   ├── models.py  
-│   │   ├── dependencies.py
+│   │   ├── schemas.py  # pydantic models
+│   │   ├── models.py   # db models
+│   │   ├── dependencies.py # db connection dependencies
 │   │   ├── services.py
 │   │   ├── security.py
 │   │   └──limiter.lua
 │   │
 │   ├── __init__.py
 │   ├── main.py
-│   ├── exceptions.py  
-│   ├── database.py  
-│   ├── redis_pool.py  
-│   ├── config.py  
-│   └── log.py  
+│   ├── exceptions.py  # global exceptions
+│   ├── database.py    # db connection
+│   ├── redis_pool.py  # redis connection
+│   ├── config.py      # global configs
+│   └── log.py         # customized logger
 ├── .env
 │   ├── .db.env
 │   ├── .dev.env  
@@ -71,11 +71,41 @@ auth_system
 4. ### Run docker compose
    ```bash
    # Old CLI
-   docker-compose -f docker-compose-prod.yml down -v
+   docker-compose -f docker-compose-prod.yml up -d
 
    # New CLI
-   docker compose -f docker-compose-prod.yml down -v
+   docker compose -f docker-compose-prod.yml up -d
    ```
+   `-d`: run containers in the background
+5. ### Send a POST request for signing up
+    ```bash
+    curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{
+            "username": "Ian",
+            "password": "Aa1234567"
+        }' \
+    http://localhost:8000/api/v1/user
+    ```
+6. ### Send a POST request for signing in
+   ```bash
+   curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{
+            "username": "Ian",
+            "password": "Aa1234567"
+        }' \
+    http://localhost:5000/api/signIn
+   ```
+7. ### Stop all containers
+    ```bash
+    # Old CLI
+    docker-compose -f docker-compose-prod.yml down -v
+
+    # New CLI
+    docker compose -f docker-compose-prod.yml down -v
+    ```
+    `-v`: delete all volumes
 # APIs Overview
 There are simple descriptions for these two APIs. Please access [Swagger API document](http:localhost:8000/docs) for more details and complete sample requests/responses after running containers following steps above.
 ### API 1: Create Account
@@ -95,8 +125,8 @@ There are simple descriptions for these two APIs. Please access [Swagger API doc
 | reason      | `str`       |
 
 ### API 2: Verify Account and Password
-- **If the password verification fails five times, the user should wait one minute before attempting to verify the password again**
-- **The log in times will be reset every 10 minutes**
+- If the password verification fails five times, the user should wait one minute before attempting to verify the password again
+- The log in times will be reset every 10 minutes
 #### Inputs: JSON payload
 | Field       | Type        |  Validation |
 | ----------- | ----------- | ----------- |
@@ -108,3 +138,5 @@ There are simple descriptions for these two APIs. Please access [Swagger API doc
 | ----------- | ----------- |
 | success     | `boolean`   |
 | reason      | `str`       |
+
+
