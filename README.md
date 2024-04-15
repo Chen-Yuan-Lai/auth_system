@@ -2,8 +2,8 @@
 A Http server for account and password Management.
 
 # Outline
-* ### [Project Structure](https://github.com/Chen-Yuan-Lai/auth_system?tab=readme-ov-file#clone-the-project)
-* ### [Solution Features](https://github.com/Chen-Yuan-Lai/auth_system?tab=readme-ov-file#solution-details)
+* ### [Project Structure](https://github.com/Chen-Yuan-Lai/auth_system?tab=readme-ov-file#project-structure-1)
+* ### [Solution Details](https://github.com/Chen-Yuan-Lai/auth_system?tab=readme-ov-file#solution-details)
 * ### [Quick Start](https://github.com/Chen-Yuan-Lai/auth_system?tab=readme-ov-file#quick-start-1)
 * ### [APIs Overview](https://github.com/Chen-Yuan-Lai/auth_system?tab=readme-ov-file#apis-overview-1)
 
