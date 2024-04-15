@@ -49,10 +49,11 @@ auth_system
 2. Use **Python** and **FastAPI** framework to implement the solution.
 3. Use Pydantic schema for input validation.
 4. Centralized handling predictable and unpredictable error with customized **middleware** and **exception handler**.
-5. Use **PostgreSQL** for data storage
+5. Use **PostgreSQL** for data storage.
 6. Use **Redis** to implement log in retry logic. And run the **lua script** for atomic pipeline.
 7. Package the solution in a Docker container and push it to **Docker Hub**.
-8. Provide a comprehensive API document with **Swagger UI**. 
+8. Provide a comprehensive API document with **Swagger UI**.
+9. Use **ruff** and **pre-commit** to guarantee  consistent coding style.
 
 
 # Quick Start
