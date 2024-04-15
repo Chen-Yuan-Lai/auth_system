@@ -29,7 +29,7 @@ auth_system
 │   ├── redis_pool.py  # redis connection
 │   ├── config.py      # global configs
 │   └── log.py         # customized logger
-├── .env
+├── .env.example
 │   ├── .db.env
 │   ├── .dev.env  
 │   └── .prod.env
