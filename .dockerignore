@@ -9,3 +9,4 @@ venv/
 spam.log
 .env.example/
 db_volumes/
+README.md
